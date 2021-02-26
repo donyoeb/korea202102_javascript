@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+    #navi{
+        background-color: yellow;
+        width: 700px;
+        height: 100px;
+
+    }
+    #side{
+        float: left;
+        background-color: green;
+        width: 100px;
+        height: 550px;
+        /*그 아무도 수평공간에 허용하지않는 block속성을 버리게 하는 방법 , 즉 inline으로 바꾸는 방법
+            인라인이기도 하면서 블럭역할도 해줘야할때*/
+       
+    }
+    #content{
+        float: left;
+        /*inline block과 플롯 차이*/
+
+        background-color: blue;
+        width: 600px;
+        height: 650px;
+        
+    }
+    #wrapper{
+        width: 700px;
+        height: 550px;
+        /*margin-left: 300px;*/
+         /*감싸는 박스 이동
+            가운데로 보낼땐 왼쪽과 오른쪽 여백을 똑같이 양분
+            좌측과 우측의 남는 여백 공간을 2분하여, 동일하게 좌우 마진을 적용하는 방법*/
+        margin: auto;
+    }
+
+</style>
+
+</head>
+
+<body>
+    <!--모든 태그는 박스모델로 간주되며, 속성은 크게 block,inline 두개를 갖는다
+        block : 나와 같은 수평 공간에 어떤 누구도 허용하지 않는다   ex)div / 크기를 지정할수있다(width,heght)
+        inline : 다른 태그요소와 수평공간에 공존이 가능하다.  ex)span  / 크기를 지정할수없다(내부 컨첸츠만큼만 늘어남)
+
+        모든 태그는 아무것도 지정하지않으면 상대위치다.  position:relative; 포지션이 없는게 아님.
+        절대위치는 앞에 뭐가있든 원하는 자리에 있어야함. position:absolute; 
+    -->
+    <span style="background-color: blueviolet; ">난 span1</span>
+    <span style="background-color: gold; position: absolute;">난 span2</span>
+    <div style="background-color: burlywood;">난 div 1   </div>
+    <div style="background-color: saddlebrown;">난 div 2   </div>
+    
+    <!--감싸는 박스까지 박스는 총 4개 감싼 박스로 들고다님
+
+    -->
+    <div id="wrapper">
+        <div id="navi">노란색박스</div>
+        <div id="side">사이드</div>
+        <div id="content">컨텐츠</div>
+    </div>
+
+
+</body>
+
+</html>

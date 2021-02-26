@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>회원가입</title>
+     
+<style>
+    /* 이영역은 스타일시트의 영역
+  스타일시트의 문법구조
+  누구를{어떻게~~}
+  누구를 지칭할때 사용하는 css의 요소를 가리켜 선택자(셀렉터)라고 한다. td선택자, 셀렉트선택자,인풋선택자 등등
+  */
+
+  /* 일괄적용 td들어간애들은 전부 레드<< */
+  td{
+    font-size:9px;
+    color: red;
+  }
+  select{ 
+      color: white;
+      background-color: blue;
+  }
+  input{  
+      background: pink;
+      border:1px solid green;
+  }
+  /*  .(점)을찍으면 나만의 스타일시트 (일괄적용되면서 원하는곳에만 적용시키는) 정의
+  이런 스타일 시트 블럭을 가리켜 클래스라고 한다.*/
+  .title_style{
+      text-align: center;
+  }
+  textarea{
+      background-color: orange;
+      background-image: url(https://cdn0.iconfinder.com/data/icons/fitness-95/24/achievement-128.png);
+      background-repeat: no-repeat;
+      /* 반복 없애기위해선 노리핏 */
+
+      width: 600px;
+      height: 300px;
+      background-size: 300px 100px;
+      padding: 0;
+      margin: 0;
+  }
+
+</style>
+     
+</head>
+<body>
+    <table border="11px" align="center'" width="700px">
+        <tr> 
+            <td colspan="2" align="center'" 
+            style="font-size:20px;
+             color: blue;
+              background-color: yellow;
+              font-weight: bold;">
+              회원가입</td>
+            <!-- 스타일시트는 반드시 테그에다 써야함 -->
+            <!-- 직접 해당 태그에 적는건 인라인방식 1회성이다 수정시 불편함 -->
+            <!--  -->
+        </tr>
+
+        
+        <tr> 
+            <td style="text-align: center;" class="title_style">ID</td>
+            <td><input type="text" placeholder="Your ID"></td>
+        </tr>
+
+
+        <tr> 
+            <td class="title_style">Password</td>
+            <td><input type="password" placeholder="Your Password"></td>
+        </tr>
+
+        <tr> 
+            <td class="title_style">Name</td>
+            <td><input type="text" placeholder="Your Name"></td>
+        </tr>
+
+        <tr> 
+            <td class="title_style">Phone</td>
+            <td>
+                <input type="text" placeholder="국번"> -
+                <input type="text" placeholder="앞자리"> -   
+                <input type="text" placeholder="뒷자리">
+            </td>   
+        </tr>
+
+        <tr>
+            <td class="title_style">Email</td>
+            <td>
+                <input type="text" placeholder="Mail ID"> @
+                <select>
+                    <option value="">naver.com</option>
+                    <option value="">gmail.com</option>
+                    <option value="">nate.com</option>
+                    <option value="">daum.net</option>
+                    <option value="">직접입력</option>
+               
+                </select>
+            </td>
+           
+
+        </tr>
+
+        <tr>
+            <td class="title_style">Skill</td>
+            <td>
+                <input type="checkbox"> node.js
+                <input type="checkbox"> oracle
+                <input type="checkbox"> mysql
+                <input type="checkbox"> javascript
+                <input type="checkbox"> css
+                <input type="checkbox"> react
+            </td>
+        </tr>
+
+        <tr>
+            <td class="title_style">Email receive</td>
+            <td>
+                <input type="radio" name="email">Yes
+                <input type="radio" name="email">No
+                
+            </td>
+        </tr>
+
+        <tr>
+            <td class="title_style">inttroduction</td>
+            <td>
+                <textarea cols="50" rows="5"></textarea>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2" align="center'">
+                <button>가입 완료</button>
+            </td>
+        </tr>
+
+    </table>
+
+<!-- 수평선 긋기 -->
+    <hr> 
+
+
+    <!-- 목록을 표현해보자!!
+        순서있는 목록 : ordered list (ol) 
+        순서없는 목록 : undordered list (ul)
+    -->
+    <ol>
+        <li>사과</li>
+        <li>수박</li>
+        <li>딸기</li>
+    </ol>
+    <ul>
+        <li>사과</li>
+        <li>수박</li>
+        <li>딸기</li>
+    </ul>
+   
+  
+<!-- h 제목태그는 1~6단계까지 지원됨 1이 가장 크고 6이 가장 작음
+    span태그에다 스타일시트로 키우는거는 틀린생각.. 이유는 스크린리더기가 제목대신 글로 해석하기때문
+    따라서 디자인 결과로 판단하지말고 각 태그가 가진 고유의 의미를 이용해야한다. -->
+    <h1>더미 텍스트</h1> 
+    <h2>더미 텍스트</h2> 
+    <h3>더미 텍스트</h3> 
+    <h4>더미 텍스트</h4>
+    <h5>더미 텍스트</h5> 
+
+
+<!-- p 문단태그 br태그대신도 사용됨 -->
+    <p>
+        <span style="font-size:90px">Lorem</span>   <b>Ipsum</b> 
+    </p>
+
+    <p>Lorem Ipsum
+        "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
+        "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."
+    </p>
+
+    <p>Lorem Ipsum
+        "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
+        "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."
+    </p>
+
+    <!-- 링크 생성 -->
+    <a></a>
+   
+    <!-- 이미지 문서내 삽입 
+        백그라운드와 이미지의 차이는 자리를 차지하지않고 차지하고의 차이-->
+    <img src="https://cdn0.iconfinder.com/data/icons/animals-87/24/cat-face-128.png">
+
+    
+
+</body>
+
+</html>

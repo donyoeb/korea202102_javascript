@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+    .div1{
+        background-color: orange;
+    }
+    .div2{
+        background-color: orchid;
+    }
+    #content{
+         /* 아이디는 #을 사용 */
+        background-color: greenyellow;
+        height: 20px;
+        text-align: center;
+        /*       패딩으로 가운데로 옮기는건 비효율 = 브라우저가 움직이면 값이 바뀌기떄문, text-align:center; 사용*/
+          
+    }
+    body{
+        margin: 0px;
+        padding-left: 100px;
+         /* 바디의 마진을 0으로해서 마진을 없앰(빈 공간) // 빈화면을 꽉채우는건 마진
+            박스안의 내용을 떨어트리는건 패딩
+
+            패딩과 포지션의 차이
+            포지션의 대상이 되려면 적어도 태그로, 즉 마크업되어 있어야한다 ->어떤효과도 주지않고 마크업 하고싶으면 span태그 쓰면됨
+          
+          */
+    }
+    
+</style>
+</head>
+<body>
+    <!-- 분할(div)해서 하나의 문서 내의 구역을 설정할때 사용됨 -->
+     <div style="background-color: orange;">
+            구분1
+     </div>
+     <div class="div2">구분2</div>
+     <div id="content">구분3</div>
+
+
+
+</body>
+</html>
