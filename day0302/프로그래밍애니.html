@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+    body{
+        margin: 0px;
+    }
+    #wrapper{
+        width: 100%; /*바디에 도달할때까지*/
+        height: 500px;
+        background: url('../images/bg.jpg');
+        background-repeat: repeat-x; /*x축으로만 반복*/
+        background-size: 100% 500px;
+        background-position: 0px 0px;
+    }
+    #hero{
+        position: absolute;
+        left: 50px;
+        top: 150px;
+        width: 150px;
+        height: 100px;
+    }
+
+</style>
+
+<script>
+// 프로그램 영역이다!
+//무조건 실행을 막기위해 블럭을 지정한 후, 코드영역에 이름을 붙여보자.
+//코드블럭의 이름은 movebg, 개발자가 그 이름을 호출할떄까지는 절대로 실행되지않음, 불러야 실행됨
+    var x=0; //자바스크립트에서는 변수선언시 var 라는 키워드 사용 variable 변수
+    function moveBg(){
+        x=x-10;
+        console.log("변수x값은",x);
+        //alert('나 불렀어?')
+        //문서 내의 wrapper라 불리는 요소의 배경을 x 축의 음수방향 <-으로 이동시키자
+        document.querySelector("#wrapper").style.backgroundPosition= x+"px 0px"
+
+    }
+    //우측으로 이동
+    var a= 50; //초기가 50이여서 50부터 시작
+
+
+    function moveRight(){
+            
+        a=a+5;
+        //문서내의 hero라는 요소의 left값을 바꾸면 좌우이동
+        document.querySelector("#hero").style.left=a+"px";
+
+    }
+    function moveLeft(){
+            
+        a=a-5;
+        //문서내의 hero라는 요소의 left값을 바꾸면 좌우이동
+        document.querySelector("#hero").style.left=a+"px";
+
+    }
+    
+
+    
+    //수동으로 하지않고 자동으로 movebg를 대신호출해주는 기능 - 자동
+    function gameloop(){
+        setInterval("moveBg()", 100);//1000분의 1초
+
+    }
+    //moveBg(); // 호출
+
+
+
+</script>
+
+</head>
+<body>
+
+    <div id="wrapper">
+        <img src="../images/hero.png" id="hero">
+    </div>
+   <!-- 이벤트 핸들러 onclick / 해당이벤트가 발생하면 어떤 자바스크립트 코드를 작성할지 결정할 수 있는 핸들러 -->
+    <button onclick="moveBg();">배경 수동으로 움직이기</button>
+    <!-- ;는 코드의 끝을 표현... movebg();alert(); 이런식으로 여러개쓸때는 써줘야함.. 하나만할땐 굳이 상관x -->
+    <button onclick="gameloop();">오토</button>
+    <!-- 자동버튼 -->
+
+
+    <!--상하좌우버튼-->
+    <button onclick="moveLeft();">좌</button>
+    <button onclick="moveRight();">우</button>
+    <button>위</button>
+    <button>아래</button>
+
+</body>
+</html>

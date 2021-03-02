@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+    .wrapper{
+        background-color: red;
+        width: 600px;
+        height: 600px;
+        margin: auto;
+    }
+    #top-div{
+        background-color: yellow;
+        width: 600px;
+        height: 100px;
+    }
+    #side-div{
+        background-color: blue;
+        width: 100px;
+        height: 400px;
+        float: left;
+    }
+    #content-div{
+        background-color: greenyellow;
+        width: 500px;
+        height: 400px;
+        float: left;
+    }
+    #footer-div{
+        background-color: grey;
+        /* 컴퓨터 분야에선 색상을 표현할때 빛의 3원색으로 표현할수 있다.
+            red256 green256 blue256 */
+        width: 100%;
+        height: 100px;
+        clear: both;/*float한 공간을 메꾸지 않는다!*/
+    }
+    .top-navi{
+        /* 자식들이 float처리가 된 경우 부모에는 반드시 overflow:hidden속성을 지정한다. */
+        overflow: hidden;
+    }
+    /* 탑 네비 클래스가 선택된 안쪽 자식요소들중 a */
+    .top-navi a{
+        text-decoration: none; /*링크 밑줄 없애기*/
+        font-size: 18px;
+        padding-left: 16px;
+        padding-right: 16px;
+        border: 1px solid black;
+        float: left;
+    }
+    #cs{
+        float: right;
+    }
+    /* a태그에 마우스 올려놓았을때 배경색 주기 
+        마우스가 올라간 a / hover=가짜태그 (태그가아니다, 유사태그 )*/
+    .top-navi a:hover{
+        background-color: coral;
+    }
+</style>
+</head>
+<body>
+    <!-- wrapper로 감싸서 한번에 움직일수있게 -->
+    <div class="wrapper">
+        <div id='top-div'>
+            <div class="top-navi">
+                <!-- #은 임시링크 href=하이퍼링크 레퍼런스 -->
+                <a href="#">Home</a>
+                <a href="#">Shopping</a>
+                <a href="#">Mypage</a>
+                <div id="cs">
+                    <a href="#">CS</a>
+                </div>  
+            </div>        
+        </div> 
+        <div id='side-div'></div>
+        <div id='content-div'></div>
+        <div id='footer-div'></div>
+    </div>
+    
+</body>
+</html>

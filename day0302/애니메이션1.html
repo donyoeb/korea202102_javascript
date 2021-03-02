@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+#ball{
+    position: absolute;
+    left: 200px;
+    top: 150px;
+    animation-name: ball-rotate ; /*애니메이션호출*/
+    animation-duration: 3s ;   /*3초간*/
+    animation-iteration-count :infinite; /*무한루프*/
+}
+/* 애니메이션 정의하기 */
+@keyframes ball-rotate{
+    from{transform: rotate(0deg);}/*시작속성*/
+    to{transform: rotate(360deg);}/*끝속성*/
+}
+</style>
+</head>
+
+<body>
+    <img id="ball" src="../images/ball.webp" alt="공이다">
+</body>
+</html>
