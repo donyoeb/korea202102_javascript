@@ -58,7 +58,22 @@
         document.querySelector("#hero").style.left=a+"px";
 
     }
-    
+    b=150;
+    function movehigh(){
+            
+        b=b-5;
+        //문서내의 hero라는 요소의 left값을 바꾸면 좌우이동
+        document.querySelector("#hero").style.top=b+"px";
+
+    }
+
+    function movelow(){
+        
+        b=b+5;
+        //문서내의 hero라는 요소의 left값을 바꾸면 좌우이동
+        document.querySelector("#hero").style.top=b+"px";
+
+    }
 
     
     //수동으로 하지않고 자동으로 movebg를 대신호출해주는 기능 - 자동
@@ -88,8 +103,8 @@
     <!--상하좌우버튼-->
     <button onclick="moveLeft();">좌</button>
     <button onclick="moveRight();">우</button>
-    <button>위</button>
-    <button>아래</button>
+    <button onclick="movehigh();">위</button>
+    <button onclick="movelow();">아래</button>
 
 </body>
 </html>
