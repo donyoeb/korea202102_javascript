@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+    .wrapper{
+
+        margin: auto;
+        width: 900px;
+        height: 600px;
+        background-color: yellow;
+        overflow: hidden; /*부모 영역을 벗어나는 컨텐츠는 과감히 가리기*/
+
+    }
+    .left-side{
+        float: left;
+        width: 150px;
+        height: 100%;
+        background-color: aquamarine;
+    }
+    #content{
+        float: left;
+        width: 750px;
+        height: 100%;
+        background-color: chocolate;
+
+        /* 넘치는애들 표현 스크롤=스크롤로 다보여주기 */
+        overflow: scroll;
+        /* overflow: hidden;  히든은 나머지는 다 짤라버리는거*/
+    }
+    img{
+        width: 100px;
+    }
+
+</style>
+<script>
+
+    var cnt =0;
+    var x;
+
+    function show(){
+
+        cnt++;
+
+        //함수 호출시, 문서내의 컨텐트 요소안에 img태그를 동적으로 생성하여 자식 요소로 두기~
+        //기존에 없던 태그를 생성한다!
+        
+        var img = document.createElement("img"); //프로그래밍 적으로 태그생성 - img태그 생성
+        img.src="../images/ball.webp"
+        document.querySelector("#content").appendChild(img); //컨텐트에 자식으로 붙이기
+    
+
+        //렐러티브 특징때문에 줄바꿈을 따로 안해도 칸이 다 차면 줄바꿈이 됨.. 
+        //하지만 줄바꿈을 위해 태그중 <br>태그를 붙여서 줄바꿈을 해줌
+        var br = document.createElement("br");
+   //     document.querySelector("#content").appendChild(br); //컨텐트에 자식으로 붙이기
+        
+        x=document.querySelector("#txt").value;  //인풋 텍스트의 벨류값을 가져오기
+        //카운터 값이 x인 경우에만 부탁 즉 appendchild()
+        ((cnt%x)==0)?  document.querySelector("#content").appendChild(br) : 0;
+    }
+
+
+</script>
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="left-side">
+            <input id="txt" type="text" value="한 줄에 몇개씩 보여줄까요?">
+            <!-- 벨류는 입력값, 플레이스홀도는 그냥 힌트 -->
+            <button onclick="show()">상품 등장</button>
+        </div>
+        <div id="content">
+            <!-- <img src="../images/ball.webp"> -->
+            
+        </div>
+    </div>
+
+
+
+</body>
+</html>

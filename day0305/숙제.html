@@ -1,0 +1,57 @@
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+
+<style>
+    
+    #hero{
+        position: absolute; /*부모인 바디를 기준으로 위치 설정할거임*/
+        left: 0px;
+        top: 200px;
+    }
+</style>
+
+<script>
+    /*
+        수동버튼을 하나 만들어서 버튼을 누르면 
+        올려놓은 캐릭터이미지가 오른쪽으로 한칸씩 이동하는것
+        그러다가 원하는 특정 좌표  도달하면  (예를들어 500에 도달)
+        다시 버튼누르면 왼쪽으로 이동하게끔
+        그러다가 다시 0으로 도달하면 오른쪽으로~~~~ 
+        반복
+
+        삼항과 퍼센트만 이용해서.. 이프문안됨
+    
+    */
+   var x=0;
+   var flag=0;
+   function move(){
+       
+        //플레그가 0일때 증가..
+        //플레그가 1일때 감소.. 
+        (flag==0)? x+=50 : x-=50;
+        (x%500==0)? flag=1 : 0;
+        (x<=0)? flag=0 : 0;
+        document.querySelector("h1").innerText="x값 : "+x;
+        document.querySelector("#hero").style.left=x+"px";
+
+
+   }
+
+</script>
+
+</head>
+<body>
+    
+    <button onclick="move()">수동 이동</button>
+    <h1>x값 : 0</h1>
+    <br>
+    <img id="hero" src="../images/ball.webp" width="50px">
+
+</body>
+</html>

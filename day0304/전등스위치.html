@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+
+    #wrapper{
+        position: relative;
+        background: url(../images/room.jpg);
+        width: 900px;
+        height: 622px;
+        background-size: 900px 622px;
+        margin: auto;
+
+    }
+    #wrapper img{
+        width: 35px;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        background: src="../images/switch_off.png"
+    }
+    #surface{
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        opacity: 0.8;
+        
+    }
+
+</style>
+<script>
+//스위치를 켜고 끄는 함수
+    var op=0.8;
+    var s = "off";
+    function turn(){
+        //투명막을 제어 문서내의 surface라 불리는 요소의 스타일중 opacity 값을 불투명
+        //0켜기, 0.8끄기
+        op = (op==0)?0.8:0;
+        document.querySelector("#surface").style.opacity=op;
+
+        
+        //스위치 이미제 제어
+        s = (s=="off")? "on":"off";
+        document.querySelector("#wrapper img").src="../images/switch_"+s+".png";
+        
+    }
+
+
+
+</script>
+
+</head>
+<body>
+
+    <div id="wrapper">
+        
+        <div id="surface"></div>
+        <img src="../images/switch_off.png" alt="" onclick="turn()">
+       
+    </div>
+
+</body>
+</html>

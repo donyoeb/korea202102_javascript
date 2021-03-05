@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+</head>
+<body>
+    <!-- 프롬프트에 년도 입력받고 윤달이 있는지 없는지 -->
+    <h1>여기에 판단결과 나올 곳</h1>
+
+    <script>
+
+        var msg;//윤달이다, 아니다
+        var n=prompt("년을 입력하세요.");//입력 메시지 창; //입력 숫자
+        var ans=(isNaN(n))?"숫자가아니잖아":"숫자입니다";
+        alert(ans);
+
+        var msg = (n%4==0)?"윤달입니다":"윤달이 아닙니다.";
+        document.querySelector("h1").innerText=msg;  //안쪽 텍스트
+    </script>
+
+    
+</body>
+</html>
