@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        window.addEventListener("load", function () {
+            document.body.addEventListener("keydown", function (e) {
+                //addevent리스터네 호출 대상이되는 익명함수에 변수를 정의하면 
+                //이벤트 객체를 받을수있따
+
+                //위,아래,좌,우 에 대해 적절한 메시지를 출력
+                //스위치문 사용
+                switch (e.keyCode) {
+                    case 37:
+                        console.log("좌");
+                        break;
+                    case 38:
+                        console.log("위");
+                        break;
+                    case 39:
+                        console.log("우");
+                        break;
+                    case 40:
+                        console.log("아래");
+                        break;
+                    default:
+                        break;
+                }
+
+            });
+        });
+
+
+
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

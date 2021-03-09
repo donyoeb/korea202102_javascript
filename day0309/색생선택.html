@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        //이벤트 핸들러를 자바스크립트에서 구현할 수있다.
+        //익명함수들중 시스템에 의해 호출당하는 함수를 콜백함수라고한다.
+
+        window.addEventListener("load", function () {
+
+            init();
+
+        }); //on뺴고 이벤트명만 적음 //바디에 들어가는 온로드 대신 쓸수있는 문구다
+
+        function init() {
+            var result = prompt("원하시는 배경색 선택\n무지개 순서 1 2 3 4 5 6 7");
+            var color;
+
+            switch (result) {
+                case '1':
+                    color = "red";
+                    break;
+                case '2':
+                    color = "orange";
+                    break;
+                case '3':
+                    color = "yellow";
+                    break;
+                case '4':
+                    color ="green";
+                    break;
+                case '5':
+                    color = "blue";
+                    break;
+                case '6':
+                    color = "navy";
+                    break;
+                case '7':
+                    color = "purple";
+                    break;
+                    
+                default:
+                    break;
+            }
+
+            document.body.style.background = color;
+
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

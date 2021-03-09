@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*   
+         #wrapper {
+            background-color: aquamarine;
+            height: 600px;
+            width: 600px;
+            margin: auto;
+
+        }
+
+        #content {
+            float: left;
+            width: 600px;
+            height: 100%;
+            background-color: green ;
+            overflow: scroll;
+        }
+
+
+        img {
+            width: 100px;
+            height: 100px;
+        }
+         */
+    </style>
+
+    <script>
+
+        window.addEventListener("load", function () {
+            init();
+        });
+        
+        var div;
+        function init() {
+            var bt = document.createElement("button");//버튼생성
+            bt.innerText="카드생성";
+            bt.addEventListener("click",function(){
+                card();
+            });
+
+            var bt2 = document.createElement("button");//버튼생성
+            bt2.innerText="자동생성";
+            bt2.addEventListener("click",function(){
+                setInterval("card()",100);
+            });
+            
+
+
+            div = document.createElement("div");//div생성
+            div.style.width=800+"px";
+            div.style.height =600+"px";
+            div.style.background="Yellow";
+            div.style.margin="auto";
+            div.style.overflow="scroll"
+
+
+            document.body.appendChild(bt);
+            document.body.appendChild(bt2);
+            document.body.appendChild(div);
+
+           
+
+
+        }
+        var cnt=0;
+        function card(){
+            cnt++;
+            var img = document.createElement("img");
+            img.src = "../images/s"+cnt+".jpg"
+            img.style.width="50px";
+            if(cnt==5) cnt=0;
+            div.appendChild(img);
+        }
+
+        /*
+                 var cnt =0;
+                var n=5;
+        
+        
+                function show() {
+        
+                    cnt++;
+        
+                    var img = document.createElement("img"); //프로그래밍 적으로 태그생성 - img태그 생성
+                    img.src = "../images/s"+cnt+".jpg"
+                    document.querySelector("#content").appendChild(img); //컨텐트에 자식으로 붙이기
+                    if(cnt>=5) cnt=0;
+        
+                }
+        */
+
+    </script>
+
+</head>
+
+<body>
+
+    <!--
+
+<div id="wrapper">
+        <button onclick="show()">클릭</button>
+        <div id="content"></div>
+    </div>
+
+  -->
+
+</body>
+
+</html>

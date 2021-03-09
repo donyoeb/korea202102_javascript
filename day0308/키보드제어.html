@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<style>
+    #wrapper{
+        margin: auto;
+        width: 1200px;
+        height: 650px;
+        background: url(../images/bg.jpg);
+        background-size: 1200px 650px;
+        background-repeat: repeat-x;
+        position: relative;
+        overflow: hidden;
+    }
+
+</style>
+
+
+<script>
+     var wp; //전역변수 wrapper
+
+    var x=0; //프로그램이 끝날떄까지 값이 누적될 용도이므로 전역변수 
+    var y=200;
+    var img; //전역이미지 
+    function init(){//블럭화 시킴으로써 바디부터 실행되는건 아니지만
+        //함수화 시켜서 바디 이후에 실행
+        img = document.createElement("img"); //기존에 없던 요소를 생성할때
+        img.src="../images/hero.png";
+                        //크리에이트
+        img.id="hero";//프로그래밍 적으로 아이디부여
+        img.style.width=100+"px";
+        img.style.height=70+"px";
+        img.style.position="absolute";
+        img.style.left=0+"px";
+        img.style.top=200+"px";
+        
+        wp =  document.getElementById("wrapper");//이미 존재하는거 가져올떄
+                    //겟
+        //wrapper에 이미지를 자식요소로 부착
+        wp.appendChild(img);
+
+
+        
+        setInterval("movebg()",10);  //실행부가 하나 별도로 존재, movebg호출
+
+    }   
+    
+    function joystiock(){
+        //alert("눌렀어?");
+        //console.log("당신이 누른 철자와 매칭되는 아스키코드는 ",event.keyCode);
+        //37좌 38위 39우 40아래
+        //우주선을 x축방향으로 증가( 우측 이동효과)
+
+        var key = event.keyCode;
+        if(key == 39){
+            x=x+10;
+            img.style.left= x+"px";
+        }
+        if( key == 37){
+            x=x-10;
+            img.style.left= x+"px";
+        }
+        if( key == 38){
+            y=y-10;
+            img.style.top = y+"px";
+        }
+        if( key == 40){
+            y=y+10;
+            img.style.top = y+"px";
+        }
+         
+
+
+    }
+    var mpx=0;
+    function movebg(){
+        //배경 이미지 좌표 변경
+        mpx--;
+        wp.style.backgroundPosition=mpx+"px 0px";
+
+        //setTimeout("movebg()",10);
+        //setinterval()은 무한 호출
+        //setinterval(1)은 1회 호출
+        //settimeout()은 한번만 호출함
+        //settimeout(movebg) 무한루프(재귀)로 호출해서 죽고 또 호출하고 죽고 또 호출하고...
+    }
+
+</script>
+</head>
+
+<body onload="init(); movebg()" onkeydown="joystiock()">
+    <!-- 바디가 다 읽혀지면~ 하고 알려주는거 onload
+        다 읽고 init함수 실행하면 됨
+        onkeydown="alert('나 눌렀어?')"
+        alert("키 \"눌렀어? \" ")   << 서로 충돌을 일으키면 안됨.. 홉따움표로 하고 여기서 키는 기능역할 , 눌렀어는 \"\"로알반 문자 역할
+    -->
+   
+    <div id="wrapper"></div>
+ 
+</body>
+</html>
+
+<script>
+   // init();  옵션1) 이렇게 맨 마지막에 호출하는 방법
+            //  옵션2)  바디에  onload 해서 문서의 내용이 다 읽혀졌을떄 호출되게하는방법  <<이방법추천
+</script>
