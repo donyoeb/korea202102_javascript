@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<script>
+    var food=["짜장면","햄버거","치킨","피자","초밥","곱창","돈까스","회","찌개","덮밥",];
+    function getRandom(){
+        var r = parseInt(Math.random()*food.length);
+         //0.0~0.9999임  *10하면 0~9로 변함 9곱하면 0~9개까지.. 3곱하면 0~2까지..
+        //food.length 를 하면 알아서 값 가져와줌  배열의 길이
+        console.log("추천메뉴 = "+food[r]);
+    }
+
+</script>
+
+</head>
+<body>
+    <button onclick="getRandom()">랜덤값 구하기</button>
+    
+</body>
+</html>

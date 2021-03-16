@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .wrapper{
+            width: 700px;
+            height: 600px;
+            background-color: blanchedalmond;
+            margin: auto;
+            overflow: hidden;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            float: left;
+        }
+        #content{
+            width: 100%;
+            height: 500px;
+            clear: both; 
+            background-color: saddlebrown;
+            /* 말려들어가는거 방지 */
+        }
+    </style>
+    <script>
+        var content;
+        function setbg(x){
+            content = document.getElementById("content");
+            content.style.background=x;
+        }
+        function set(y){
+            alert("당신이 선택한div의 아이디는"+y);
+            var div = document.getElementById(y);
+            content = document.getElementById("content");
+            content.style.background = div.style.background;
+            
+        }
+    </script>
+</head>
+
+<body>
+    <div class ="wrapper">
+        <div id="box1" class="box" style="background-color: red;" onclick="setbg('red')"></div>
+        <div id="box2" class="box" style="background-color: orange;" onclick="setbg(this.style.background)"></div>
+        <div id="box3" class="box" style="background-color: yellow;" onclick="set('box3')"></div>
+        <div id="box4" class="box" style="background-color: green;" onclick="setbg('green')"></div>
+        <div id="box5" class="box" style="background-color: blue;" onclick="setbg('blue')"></div>
+        <div id="box6" class="box" style="background-color: navy;" onclick="setbg('navy')"></div>
+        <div id="box7" class="box" style="background-color: purple;" onclick="setbg('purple')"></div>
+        <div id="content">도화지</div>
+    </div>
+    
+</body>
+</html>

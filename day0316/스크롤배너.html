@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //모든걸 동적으로 처리할 예정이므로 각종 정보를 전역변수로 선언하자
+        var imgWidth = 100; //이미지 너비
+        var imgHeight = 100; //이미지의 높이
+        var gap = 5; //이미지 사이 간격
+        var imgcount = 3; //액자에 보여질 이미지수
+        var container;
+
+        var imgarray = ["img0.jpg", "img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg", "img5.jpg", "img6.jpg"];
+        var bannerimg = []; //img태그 자체를 담게될 배열( 추후 이 배열을 이용하여 이동)
+        var targetX = 0; //임계점에 도달한 모든 이미지가 가야할곳
+        var flag=true;
+
+
+        function init() {
+            createFrame();
+            createImg();
+            targetX = (bannerimg.length - 1) * (imgWidth + gap);
+            setInterval("flowImg()", 100);
+        }
+
+        function createFrame() {
+            container = document.createElement("div");
+            container.style.background = "Red";
+            container.style.width = gap + ((imgWidth + gap) * imgcount) + "px";
+            container.style.height = ((gap * 2) + imgHeight) + "px";
+            container.style.margin = "auto";
+            container.style.position = "relative";
+            container.style.overflow="hidden";
+            
+
+            document.body.appendChild(container);
+
+        }
+
+        function createImg() {
+            for (var i = 0; i < imgarray.length; i++) {
+
+                var img = document.createElement("img");
+                img.src = "../images/surek/" + imgarray[i];
+                img.style.width = imgWidth + "px";
+                img.style.height = imgHeight + "px";
+
+                //절대위치 
+                img.style.position = "absolute";
+                img.style.left = gap + (imgWidth + gap) * i + "px";
+                img.style.top = gap + "px";
+
+                //이미지에 마우스이벤트 연결
+                img.addEventListener("mouseover", function () {
+                    flag = false;
+
+                });
+                img.addEventListener("mouseout", function () {
+                    flag = true;
+
+                });
+
+                container.appendChild(img);
+                bannerimg.push(img);
+
+            }
+        }
+
+        function flowImg() {
+            if (flag) {
+                //액자안의 모든 이미지를 음수방향으로 움직이자!!
+                for (var i = 0; i < bannerimg.length; i++) {
+
+                    bannerimg[i].style.left = parseInt(bannerimg[i].style.left) - 5 + "px";
+
+                    if (parseInt(bannerimg[i].style.left) < -(imgWidth + gap)) {
+                        console.log("도달완료");
+                        bannerimg[i].style.left = targetX + "px"
+                    }
+                }
+            }
+
+
+        }
+
+        window.addEventListener("load", function () {
+            init();
+        });
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

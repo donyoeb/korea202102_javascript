@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+
+
+<script>
+    function checkall(){
+      // document.getElementById("kb").checked=document.getElementById("king").checked; //왕 체크버튼의 상태에따라 kb의상태도 변경
+      //문서내의 ch들을 가져오기       document.getElementsByName    s가 붙는다 이름이 배열로 들어가기떄문에
+        var ch = document.getElementsByName("ch");
+        for(var i=0;i<ch.length;i++){
+
+            ch[i].checked= document.getElementById("king").checked;
+        }
+    }
+
+
+
+</script>
+</head>
+<body>
+
+    <table border="1px" width="600px">
+        <tr>
+            <td width="30px">
+                <input type="checkbox" onclick="checkall()" id="king">
+            </td>
+            <td>전체 선택</td>
+        </tr>
+        <tr>
+            <td width="30px">
+                <!--
+                    id는 중복을 불허하지만, name은 중복을 허용
+                    특히 자바스크립트에서는 배열로 
+                    네임은 중복을 허용하기떄문에, 자바스크립트에서는 배열로 접근이 가능 
+                    ch라는 배열 그룹이 만들어짐
+                -->
+                <input type="checkbox" id="kb" name="ch">
+            </td>
+            <td>국민은행 대출안내</td>
+        </tr>
+
+        <tr>
+            <td width="30px">
+                <input type="checkbox" name="ch">
+            </td>
+            <td>국민은행 대출안내</td>
+        </tr>
+        <tr>
+            <td width="30px">
+                <input type="checkbox" name="ch">
+            </td>
+            <td>국민은행 대출안내</td>
+        </tr>
+        <tr>
+            <td width="30px">
+                <input type="checkbox" name="ch">
+            </td>
+            <td>국민은행 대출안내</td>
+        </tr>
+        <tr>
+            <td width="30px">
+                <input type="checkbox" name="ch">
+            </td>
+            <td>국민은행 대출안내</td>
+        </tr>
+        <tr>
+            <td width="30px">
+                <input type="checkbox" name="ch">
+            </td>
+            <td>국민은행 대출안내</td>
+        </tr>
+        <tr>
+            <td width="30px">
+                <input type="checkbox" name="ch">
+            </td>
+            <td>국민은행 대출안내</td>
+        </tr>
+        <tr>
+            <td width="30px">
+                <input type="checkbox" name="ch">
+            </td>
+            <td>국민은행 대출안내</td>
+        </tr>
+        <tr>
+            <td width="30px">
+                <input type="checkbox" name="ch">
+            </td>
+            <td>국민은행 대출안내</td>
+        </tr>
+        <tr>
+            <td width="30px">
+                <input type="checkbox" name="ch">
+            </td>
+            <td>국민은행 대출안내</td>
+        </tr>
+    </table>
+    
+</body>
+</html>

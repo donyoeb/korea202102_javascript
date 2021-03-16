@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<script>
+/*
+window.addEventListener("load",function(){
+    createtable();
+});
+function createtable(){
+    //문서내 없었떤 태그를 크리에이트 처리ㅏㅎ여 생성하는 방법으로 테이블구성
+    var table = document.createElement("table"); //<table></table>
+    table.style.width=300+"px";
+
+    var n = prompt("콘크리트두께");
+    table.border=n +"px solid red";
+
+    var y = prompt("호수입력");
+    var x = prompt("층수입력");
+    document.body.appendChild(table);
+
+    for(i=y;i>=1;i--){
+        var tr = document.createElement("tr");//<tr></tr>
+        
+        for(j=1;j<=x;j++){
+        
+            var td = document.createElement("td")
+            td.innerText=i+"0"+j +"호";
+            tr.appendChild(td);
+            
+        }
+        table.appendChild(tr);
+    }
+   
+
+}
+*/
+
+//12번
+/*
+for(i=0;i<5;i++){
+    for(j=0;j<5;j++){
+        if(j>3){
+            document.write("★<br>");
+        }
+        else{
+            
+        document.write("☆");
+        }
+    }
+}
+*/
+
+for(var i=1; i<=9;i++){
+    for(var j=2; j<=9; j++){
+        document.write(j+"*"+i+" = "+i*j+"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp");
+
+    }
+    document.write("<br>");
+}
+
+
+
+
+</script>
+
+
+</head>
+<body>
+    
+</body>
+</html>

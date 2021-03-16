@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<!-- 롤러코스터 -->
+<style>
+
+    .wrapper{
+        width: 1200px;
+        height: 600px;
+        background-color: aquamarine;
+        overflow: hidden;
+    }
+    #content{
+        width: 1000px;
+        height: 100%;
+        background: url("../images/roller.png");
+        background-repeat: no-repeat;
+        background-size: 1000px 600px;
+        float: left;
+    }
+    #log{
+        width: 200px;
+        height: 100%;
+        background-color: seagreen;
+        float: left;
+        overflow: scroll;
+    }
+
+</style>
+
+
+<script>
+    var content;
+    var log;
+    var pointArray=[]; //점의 쌍을 모아놓을 2차원 배열이 될, 일차원 배열
+    var img;
+
+
+    function init(){
+        content = document.getElementById("content");
+        log = document.getElementById("log");
+        createhero();
+    }
+
+    function createhero(){
+         img = document.createElement("img");
+        img.src="../images/pika.png";
+        img.style.width="70px";
+        img.style.height="70px";
+        img.style.position="absolute";
+        img.style.left=10+"px";
+        img.style.top=200+"px";
+
+        content.appendChild(img);
+
+    }
+
+    function createPos(){
+        //마우스 클릭한위치에 점찍자
+        var span=document.createElement("span");
+        span.innerText="●";
+        span.style.color="red";
+        span.style.fontSize="1px";
+        span.style.position="absolute";
+        var x = event.clientX;
+        var y = event.clientY;
+        span.style.left=x+"px";
+        span.style.top=y+"px";
+
+        //현재 마우스에 의해 얻어진 좌표정보를 저장해보자
+        var pos=[x,y];
+        //생성된 점의 좌표배열을 pointarray에 누적
+        pointArray.push(pos);
+        printPos();
+
+        content.appendChild(span);
+    }
+
+    function printPos(){
+        //좌표가 누적된 좌표값을 div에 출력
+        var str="";//로그에 누적될 스트링변수 선언
+        for(var i=0;i<pointArray.length;i++){
+
+            str = str+ "["+pointArray[i][0]+","+pointArray[i][1]+"]\n";
+            
+            /*
+            var box = pointArray[i]; //안쪽박스
+            str = str+ "["+box[0]+","+box[1]+"]\n";
+            */
+        }
+        log.innerText=str;
+
+    }
+    var n=0;
+    function move(){
+
+        img.style.left=(pointArray[n][0]-35)+"px"; //이미지 가운데로 가라고 -35
+        img.style.top=(pointArray[n][1]-35)+"px"; //가운데때문에 -35
+
+        n++;
+    }
+    var auto_key;
+    var flag=0;
+    function auto(){
+        if(flag==0){
+            
+            auto_key = setInterval("move()",1000);
+            flag=1;
+        }
+    }
+
+    function stop(){
+        
+        clearInterval(auto_key);
+        flag=0;
+    }
+
+    window.addEventListener("load",function(){
+        init();
+    });
+
+
+</script>
+
+</head>
+<body>
+    <div class="wrapper">
+        <div id="content" onmousedown="createPos()"></div>
+        <div id="log">좌표 로그</div>
+    
+    </div>
+    <button onclick="move()">수동</button>
+    <button onclick="auto()">자동</button>
+    <button onclick="stop()">정지</button>
+</body>
+</html>

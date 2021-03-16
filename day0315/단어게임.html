@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+    .wrapper{
+        width: 500px;
+        height: 700px;
+        margin: auto;
+        background-color: tan;
+    }
+    #wordarea{
+        width: 100%;
+        height: 200px;
+        background-color: cyan;
+        font-size: 100px;
+        text-align: center;
+    }
+    #inputarea{
+        height: 150px;
+    }
+    #inputarea input{
+        width: 98%;
+        height: 100%;
+        background-color: darkcyan;
+        color: white;
+        font-weight: bold;
+        font-size: 85px;
+        text-align: center;
+    }
+    #feedbackarea{
+        width: 100%;
+        height: 150px;
+        font-size: 120px;
+        color: red;
+        font-weight: bold;
+        text-align: center;
+        background-color: greenyellow;
+
+    }
+    #scorearea{
+        height: 150px;
+        font-size: 130px;
+        font-weight: bold;
+        color: black;
+        text-align: center;
+    }
+</style>
+
+<script>
+
+    var word=[
+        "모가로스",
+        "베르가",
+        "얀기로",
+        "골로스",
+        "도라비스",
+        "쟈그",
+        "쿠보",
+        "고르고르",
+        "아마란스",
+        "그리프스"
+    ]
+    var n=0;
+    
+    function enter(){
+        //엔터 쳤을떄만 아래 코드가 수행하게 하려면 
+        //아스키코드값이 엔터값인경우 ~
+        if(event.keyCode == 13){
+            n++;
+        }
+        if(n<10){
+            var x = printword();
+            alert(x);
+        }
+    }
+
+    var wordarea;
+    var inputarea;
+    var input_text;
+    var feedbackarea;
+    var scorearea;
+
+    function init(){ //프로그램 가도오가 동시에 무언가를 초기화 할 목적이있으면 이 함수안에 한다.
+        wordarea = document.getElementById("wordarea");
+        inputarea = document.getElementById("inputarea");
+        input_text = document.getElementById("input_text");
+        feedbackarea = document.getElementById("feedbackarea");
+        scorearea = document.getElementById("scorearea");
+    }
+
+    function printword(){
+        wordarea.innerText =word[n];
+        return wordarea.innerText;
+       
+    }
+ 
+    window.addEventListener("load",function(){
+        init();
+        printword();
+    });
+        
+    
+
+</script>
+</head>
+<body>
+
+    <div class="wrapper">
+        <div id="wordarea">단어출력</div>
+        <div id="inputarea">
+            <!--온키업/다운 구분-->
+            <input id="input_text" type="text" placeholder="단어입력" onkeyup="enter()">
+        </div>
+        <div id="feedbackarea">OX</div>
+        <div id="scorearea">점수</div>
+
+
+    </div>
+    
+
+</body>
+</html>
