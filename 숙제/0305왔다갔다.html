@@ -1,0 +1,78 @@
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+
+<style>
+    
+    #hero{
+        width: 150px;
+        position: absolute; /*부모인 바디를 기준으로 위치 설정할거임*/
+        left: 0px;
+        top: 200px;
+    }
+</style>
+
+<script>
+    /*
+        수동버튼을 하나 만들어서 버튼을 누르면 
+        올려놓은 캐릭터이미지가 오른쪽으로 한칸씩 이동하는것
+        그러다가 원하는 특정 좌표  도달하면  (예를들어 500에 도달)
+        다시 버튼누르면 왼쪽으로 이동하게끔
+        그러다가 다시 0으로 도달하면 오른쪽으로~~~~ 
+        반복
+
+        삼항과 퍼센트만 이용해서.. 이프문안됨
+    
+    */
+   var x=0; //x값
+   var flag=0; //증가일지 감소일지 결정
+   function move(){
+       
+        //플레그가 0일때 증가..
+        //플레그가 1일때 감소.. 
+        (flag==0)? x+=50 : x-=50;
+        (x%500==0)? flag=1 : 0;  //짝수든 홀수든 하려면 아래처럼 범위 식으로 해야 좋다!
+        (x<=0)? flag=0 : 0;    
+        document.querySelector("h1").innerText="x값 : "+x;
+        document.querySelector("#hero").style.left=x+"px";
+//        document.getElementById("ball").style.left=x+"px"; //셀렉터가 아니여서 샵빼고 아이디 입력 , 스타일시트의 레프트값을 변환할거다~
+    /*
+        step=(flag)? 50:-50;
+        x=x+step;
+        flag = (x>=500 || x<=0)? !flag:flag;
+    */
+    //컨트롤 a   +     컨트롤 k+f  === > 자동정렬해줌
+
+   }
+   var st; //전역변수
+   function auto(){
+        //나대신 커ㅁ퓨터가 수동함수를 호출해주는게 자동이다!!
+        st = setInterval("move()",100);
+
+   }
+
+   function stop(){
+       //setinterval을 멈추기위해선 clearinterver함수이용
+       // (현재진행중인 인터벌) 
+       clearInterval(st);
+   }
+
+</script>
+
+</head>
+<body>
+    
+    <button onclick="move()">수동 이동</button>
+    <button onclick="auto()">자동</button>
+    <button onclick="stop()">스탑</button>
+    <h1>x값 : 0</h1>
+    <br>
+    <img id="hero" src="../images/ball.webp" width="50px">
+
+</body>
+</html>
