@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>게임스테이지 동적생성</title>
+
+<style>
+    #container{
+        width: 1000px;
+        height: 600px;
+        background: url(../images/bg.jpg);
+        background-size: 1000px 600px;
+        margin: auto;
+        position: relative;
+    }
+
+
+</style>
+
+<script>
+    var container;
+    var map=[
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    ];
+    function init(){
+        container=document.getElementById("container");
+        createBlock();
+
+    }
+
+    function createBlock(){
+        for(var i=0;i<map.length; i++){
+            for(var j=0; j<map[i].length; j++){
+                if(map[i][j]==1){
+                        
+                    var img = getGameItem("block.png",i,j);
+                    container.appendChild(img);
+                }
+                else if(map[i][j]==2){
+                        
+                        var img = getGameItem("pika.png",i,j);
+                
+                        container.appendChild(img);
+                    }
+            }
+        }
+        
+    }
+
+    function getGameItem(path,i,j){//이 함수를 호출하는자는 게임 아이템을 가질수있다.
+        var img = document.createElement("img");
+        img.src="../images/"+path;
+        img.style.width=50+"px";
+        img.style.height=50+"px";
+        img.style.position="absolute";
+
+        img.style.left=50*j+"px";
+        img.style.top=50*i+"px";
+
+        return img;
+
+    }
+
+    window.addEventListener("load",function(){
+        init();
+    });
+
+</script>
+
+
+</head>
+<body>
+    <div id="container"></div>
+</body>
+</html>

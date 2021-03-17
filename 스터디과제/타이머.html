@@ -1,12 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
-<body>
+    <style>
+        #wrapper {
+            border: 1px solid red;
+            margin: auto;
+            width: 800px;
+        }
+
+        #wrapper input {
+            font-size: 120px;
+            width: 150px;
+            text-align: right;
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        #wrapper button {
+            text-align: center;
+            border: 1px solid red;
+            color: red;
+            background-color: white;
+            border-radius: 20%;
+        }
+
+        #wrapper span {
+            font-size: 50px;
+            margin-left: 20px;
+        }
+
+        #butt {
+            margin-left: 250px;
+            margin-top: 30px;
+        }
+
+        #butt button {
+            font-size: 30px;
+        }
+    </style>
+
+    <script>
+
+        /*
+             스탑워치를 응용하여 
+            시간을 입력하면 그 시간부터 0으로 카운트다운 하며 0초 도달 시 알림이 울리는 타이머를 만들어 주세요!
     
+            파트너와 시간협의 후 제작!
+            수요일 수업종료시~자정까지 업로드!!
+        
+        */
+
+        var t_hou;//시분초 문서에서 아이디 받기
+        var t_min;
+        var t_sec;
+
+        function init() {
+            t_hou = document.getElementById("t_hou");
+            t_min = document.getElementById("t_min");
+            t_sec = document.getElementById("t_sec");
+            //분과 초를 0으로 초기화
+
+            t_hou.value = 0;
+            t_min.value = 0;
+            t_sec.value = 0;
+        }
+
+        var hou = 0;//시
+        var sec = 0;//초
+        var min = 0;//분 초기화
+        var startflag = 0; //시작하고 0이된건지 처음부터 0인건지 확인
+
+        function countup() {
+
+            hou = t_hou.value;
+            min = t_min.value;
+            sec = t_sec.value;
+            hou = parseInt(hou);
+            min = parseInt(min);
+            sec = parseInt(sec);
+
+            if (sec == 0 && min == 0 && hou == 0) { 
+                if(startflag==0){//아무것도 입력하지않은 상황
+                    alert("숫자를 입력하세요");
+                    stop(); //자동모드 중지
+                }
+                else{ //시간이 감소하다가 시분초가 0이된 상황
+
+                    alert("시간이 끝났습니다.");
+                    reset(); //재설정
+                    stop();
+                }      
+            }
+            else {
+                startflag=1;
+
+                sec--;
+                if(sec<0 ){
+                    sec=59;
+                    min--;
+                }
+                if(min<0 ){
+                    min=59;
+                    hou--;
+                }
+
+                t_sec.value = change(sec);
+                t_min.value = change(min);
+                t_hou.value = change(hou);
+            }
+
+
+        }
+
+        function change(n) {
+            //00 처리를 위한 함수
+            var result;
+            if (n < 10) {
+                result = "0" + n;
+            }
+            else {
+                result = n;
+            }
+            return result;
+        }
+
+        var auto_key;
+        var flag = 0; //자동버튼 계속 누르는걸 방지
+
+        function auto() {
+            if (flag == 0) {
+
+                auto_key = setInterval("countup()", 1000);//1000하면 1초씩.. 빠르게보기위해10
+                flag=1;
+            }
+        }
+
+        function stop() {
+            clearInterval(auto_key);
+            flag = 0;
+        }
+
+        function reset() {
+            t_hou.value = 0;
+            t_min.value = 0;
+            t_sec.value = 0;
+            startflag=0;
+        }
+
+        window.addEventListener("load", function () {
+            init();
+        });
+
+    </script>
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <input type="text" id="t_hou"><span>시</span>
+        <input type="text" id="t_min"><span>분</span>
+        <input type="text" id="t_sec"><span>초</span>
+        <p>
+        <div id="butt">
+            <button onclick="auto()">시작</button>
+            <button onclick="stop()">정지</button>
+            <button onclick="reset()">리셋</button>
+        </div>
+
+    </div>
+
 </body>
+
 </html>
