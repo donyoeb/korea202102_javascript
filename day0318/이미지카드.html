@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+
+<style>
+    #wrapper{
+        width: 1000px;
+        height: 340px;
+        background-color: yellow;
+        margin: auto;
+        overflow: hidden;
+        
+    }
+
+
+</style>
+
+<script>
+    var wrapper;
+    var cardarray=[];
+
+    function init(){
+        wrapper=document.getElementById("wrapper");
+
+        for(var i=1;i<=3;i++){
+            
+            cardarray[i] = createcard(i);
+            wrapper.appendChild(cardarray[i]);
+
+        }
+    }
+
+    //카드 한개를 생성하는함수
+    function createcard(i){
+        
+        var card =[];
+        card[i]= document.createElement("div"); //이미지를 배경으로 안고있는 바깥쪽 카드
+        card[i].style.width=300+"px";
+        card[i].style.height=320+"px";
+        
+        card[i].style.backgroundImage="url(../images/tr/tr"+i+".jpg";
+        card[i].style.backgroundSize="cover";
+        card[i].style.position="relative";
+        card[i].style.overflow="hidden";
+        card[i].style.float="left";// 여러개 카드가 블럭으로 아래로연결되서 띄우기
+        card[i].style.margin=5+"px";
+        card[i].style.boxSizing="border-box";
+
+        //텍스트박스
+        var textbox =[];
+        textbox[i]= document.createElement("div");
+        textbox[i].style.width=300+"px";
+        textbox[i].style.height=320+"px";
+        textbox[i].style.backgroundColor="rgb(65, 65, 63)";
+        textbox[i].style.opacity=0.8;
+        textbox[i].style.position="absolute";
+        textbox[i].style.top=270+"px";
+        
+        switch(i){
+            case 1:
+                textbox[i].innerText="가고싶다 그곳";
+                break;
+            case 2:
+                textbox[i].innerText="ㅎㅇ";
+                break;
+            case 3:
+                textbox[i].innerText="ㅂㅇ";
+                break;
+            default:
+                break;
+        }
+        
+        textbox[i].style.color="white";
+        textbox[i].style.fontSize=18+"px";
+        textbox[i].style.textAlign="center";
+        textbox[i].style.paddingTop=10+"px";
+        textbox[i].style.boxSizing="border-box"; //패딩하면 밀리는쪽으로 벽도 밀리기때문에 박스사이징해줌
+
+        //마우스 오버 이벤트 구현
+        textbox[i].addEventListener("mouseover",function(){
+            //this.style.top=0+"px";
+            targetY[i]=0;
+        });
+        textbox[i].addEventListener("mouseout",function(){
+          //  this.style.top=270+"px";
+            targetY[i]=270;
+        });
+
+        //조립 (텍스트박스를 카드에 넣자)
+        card[i].appendChild(textbox[i]);
+        
+        return card[i];
+    }
+
+    var a=0.1;//부드러움 정보(0~1까지) 1로갈수록 둔탁
+    var targetY=[]; //텍스트박스의 목표지점 ... 여러가지면 배열로해서 전부 다르게 하게함
+    //부드럽게 오르내리는 감속도 처리함수
+    function slideUpDown(){
+        //물체 위치 = 기존물체위치 + a*(목표지점-기존물체위치)
+        var textbox=[];
+        for(var i=1;i<=cardarray.length;i++){
+            
+            textbox[i] = cardarray[i].children[0]; //텍스트박스라는 안쪽 div를 지정
+            //console.log("움직일 대상 div는",textbox);
+        
+            textbox[i].style.top=parseFloat(textbox[i].style.top) + a*(targetY[i] - parseFloat(textbox[i].style.top))+ "px";
+
+        }
+    }
+
+    window.addEventListener("load",function(){
+        init();
+        
+        setInterval("slideUpDown()",10); //인터벌은 최초의 한번만 호출하면 됨. 처음부터 심장은뛰고있어야함
+
+    });
+
+</script>
+
+</head>
+<body>
+
+    <div id="wrapper"></div>
+    
+</body>
+</html>
