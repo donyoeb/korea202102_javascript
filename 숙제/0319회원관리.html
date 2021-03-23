@@ -83,11 +83,16 @@
                 console.log("총 누적회원수-", memberarray.length);
 
                 getList();
+                t_id.value="";
+            t_name.value="";
+            t_phone.value="";
+            t_money.value="";
 
             }
         }
 
         function getList() {
+            listflag = 0; //기존 리스트값 
             var tag = "<table width=\"100%\" border=\"1\">";
 
             tag += "<tr style=\"background:gray\">";
@@ -143,13 +148,26 @@
         }
 
         //오른쪽으로 넘기는 함수
-        var whomi=0; 
+        var whomi = 0;
         function whoru(i) {
-            d_id.value = memberarray[i][0];
-            d_name.value = memberarray[i][1];
-            d_phone.value = memberarray[i][2];
-            d_money.value = memberarray[i][3];
+            if (listflag == 0) { //기존 테이블 출력하고 tr클릭할때 오른쪽으로 넘기는 플레그
+
+                d_id.value = memberarray[i][0];
+                d_name.value = memberarray[i][1];
+                d_phone.value = memberarray[i][2];
+                d_money.value = memberarray[i][3];
+
+            }
+            if (listflag == 1) {//검색 테이블 출력하고 tr클릭할때 오른쪽으로 넘기는 플레그
+
+                d_id.value = targetmember_table[i][0];
+                d_name.value = targetmember_table[i][1];
+                d_phone.value = targetmember_table[i][2];
+                d_money.value = targetmember_table[i][3];
+
+            }
             whomi = i; //tr을 클릭했을때 수정과 삭제를 위해 현재 오른쪽으로 넘어간 배열이 몇번째인지 확인
+   
         }
 
 
@@ -161,7 +179,7 @@
             var dp_v = d_phone.value;
             var dm_v = d_money.value;
 
-            if(ans){ //확인버튼 클릭시
+            if (ans) { //확인버튼 클릭시
                 memberarray[whomi][0] = di_v;
                 memberarray[whomi][1] = dn_v;
                 memberarray[whomi][2] = dp_v;
@@ -169,69 +187,72 @@
 
                 getList();
             }
-            else{ //취소시
+            else { //취소시
                 return;
 
             }
-/*
-            if (ans) {//환인버튼시
-                for (var i = 0; i < memberarray.length; i++) {
-                    if (di_v == memberarray[i][0]) {   //아이디를 참조해서 배열 찾아가기
-
-                        memberarray[i][1] = dn_v;
-                        memberarray[i][2] = dp_v;
-                        memberarray[i][3] = dm_v;
-                    }
-
-                }
-                getList();
-            }
-            else {
-                //취소시
-                return;
-            }
+            /*
+                        if (ans) {//환인버튼시
+                            for (var i = 0; i < memberarray.length; i++) {
+                                if (di_v == memberarray[i][0]) {   //아이디를 참조해서 배열 찾아가기
             
+                                    memberarray[i][1] = dn_v;
+                                    memberarray[i][2] = dp_v;
+                                    memberarray[i][3] = dm_v;
+                                }
             
-*/
+                            }
+                            getList();
+                        }
+                        else {
+                            //취소시
+                            return;
+                        }
+                        
+                        
+            */
         }
 
         //삭제함수
         function drop() {
             var ans = confirm("삭제 하시겠습니까?");
-  
-            var di_v = d_id.value;
-            var dn_v = d_name.value;
-            var dp_v = d_phone.value;
-            var dm_v = d_money.value;
 
-            if(ans){ //확인버튼 클릭시
+            if (ans) { //확인버튼 클릭시
                 memberarray.splice(whomi, 1);   //선택한 (whomi번째) 줄 삭제 
 
                 getList();
             }
-            else{ //취소시
+            else { //취소시
                 return;
 
             }
-/*
-            if (ans) {//환인버튼시
-                for (var i = 0; i < memberarray.length; i++) {
-                    if (di_v == memberarray[i][0]) {
-                        memberarray.splice(memberarray[i], 1);
-                    }
+            /*
 
-                }
-                getList();
-            }
-            else {
-                //취소시
-                return;
-            }
+               var di_v = d_id.value;
+            var dn_v = d_name.value;
+            var dp_v = d_phone.value;
+            var dm_v = d_money.value;
+                        if (ans) {//환인버튼시
+                            for (var i = 0; i < memberarray.length; i++) {
+                                if (di_v == memberarray[i][0]) {
+                                    memberarray.splice(memberarray[i], 1);
+                                }
             
- */
+                            }
+                            getList();
+                        }
+                        else {
+                            //취소시
+                            return;
+                        }
+                        
+             */
 
         }
 
+
+        var listflag = 0; //써치 결과 테이블인지, 기존 테이블인지 구분하는 플레그
+        var targetmember_table = [];
         function searchbt() {
             var target = document.getElementById("selectbox");
             var searchtext = document.getElementById("searchtext").value;
@@ -239,12 +260,19 @@
             var t_v = target.options[target.selectedIndex].value;  //s_id, s_name으로 값 가져옴
             var targetmember = [];
 
+            listflag = 1; // 서치한 검색 결과 리스트값
+
+            var cnt = 0; //타겟멤버 테이블 배열에 저장을 위한 카운트값 ... 새로운 배열에 새로운 카운트값을 제공
+
             if (memberarray.length > 0) {
 
                 if (t_v == 's_id') { //셀렉트 박스의 값
                     for (var i = 0; i < memberarray.length; i++) {
                         if (searchtext == memberarray[i][0]) { //아이디와 인풋텍스트의 값이 같을때
                             targetmember.push(memberarray[i]);
+
+                            targetmember_table[cnt] = memberarray[i];
+                            cnt++;//한사람이 증가할떄마다 카운트 증가
                         }
 
                     }
@@ -253,10 +281,11 @@
                     for (var i = 0; i < memberarray.length; i++) {
                         if (searchtext == memberarray[i][1]) {
                             targetmember.push(memberarray[i]);
+                            targetmember_table[cnt] = memberarray[i];
+                            cnt++;
                         }
                     }
                 }
-
                 getsearchlist(targetmember); //새로운 멤버리스트 출력함수에 타겟멤버들을 넣기
 
             }
@@ -268,6 +297,7 @@
 
         //새로운 멤버리스트 출력함수
         function getsearchlist(arr) {
+
             var tag = "<table width=\"100%\" border=\"1\">";
 
             tag += "<tr style=\"background:gray\">";

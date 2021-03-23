@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+
+<style>
+
+</style>
+
+<script>
+
+    var span=[];
+    var color=["red","blue","green","pink","purple","black","orange"];
+    var font=["♪","☆","★","○","●","◇","◆"];
+    var y=[50,100,150,200,250,300,350];
+
+
+    function init(){
+        for(var i =0;i<7;i++){
+            span[i]=document.createElement("span");
+            span[i].style.position = "absolute";
+            span[i].style.left = 0 + "px";
+            span[i].style.top = 100+y[i]+ "px";
+            span[i].innerText = font[i];
+            span[i].style.fontSize = 20 + "px";
+            span[i].style.color = color[i];
+            document.body.appendChild(span[i]);
+        }
+   
+    }
+
+    function move(){
+        x=x+velX;
+        for(i=0;i<7;i++){
+            
+            span[i].style.left= (x*(i+1))+"px";
+        }
+    }
+
+    window.addEventListener("load",function(){
+        
+        init();
+        setInterval("move()",500);
+    });
+</script>
+
+</head>
+<body>
+    
+</body>
+</html>

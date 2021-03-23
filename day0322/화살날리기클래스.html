@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+    </style>
+    
+    <script src="../js/lib.js"></script>
+
+
+    <script>
+
+        var arrow=[];
+        var colorarray =["red","blue","green","pink","purple","black","orange"];
+        var text=["♪","☆","★","○","●","◇","◆"];
+
+        //1회성이 아닌, 추후 두고두고 써먹을 코드 영역을 지정한 후, 거푸집으로 선언하자!!
+        //전산에서는 이코드단위를 클래스라고 한다..
+        //2015년부터 
+        //클래스명은 자바,c#등에서 첫 철자를 대문자로 작성함이 약속임
+
+        class Arrow { //화살 자체가 아니라, 장차 화살을 만들어 낼 틀!즉 물건 자체가 아니다!!
+            //거푸집이다.. 틀임
+            
+            constructor(y, color, velX, text) { 
+                //웬만하면 클래스 안에껀 여기에 먹어주는게 좋음 
+                // 클래스명과 동일한 함수
+                
+                this.span;
+                this.velX = velX; //x좌표의 속도
+                this.x = 0;//x좌표
+
+                this.y= y;
+                this.color=color;
+                this.text = text
+                
+            }
+
+            //사물이 보유한 함수를 가리켜, 그 사물의 동장박식, 방법을 표현한다고 하여 메서드라고한다
+
+
+            init() {
+                this.span = document.createElement("span");
+                this.span.style.position = "absolute";
+                this.span.style.left = 0 + "px";
+                this.span.style.top = this.y + "px";
+                this.span.innerText = this.text;
+                this.span.style.fontSize = 20 + "px";
+                this.span.style.color = this.color;
+                document.body.appendChild(this.span);//body에 부착!!
+            }
+
+
+            move() {
+                this.x = this.x + this.velX;
+                this.span.style.left = this.x + "px";
+            }
+
+
+         }
+
+        function auto(){
+           //화살을 날릴 함수 따로 생성  인터벌 무브 대신 사용
+            for(var i =0; i<arrow.length; i++){
+                arrow[i].move();
+            }
+
+        }
+
+
+        window.addEventListener("load", function () {
+            for(var i=0;i<100;i++){
+                arrow[i] = new Arrow(i*10, colorarray[getRandom(colorarray.length)], getRandom(20)+1 , text[getRandom(text.length)] );
+                 //constructor()생성자 함수의 매개변수에 값 전달 // (y높이값, 색상, x속력)
+
+                arrow[i].init(); //원하는 만큼 거푸집으로부터 화살 생성해보기. 즉 쇳물 붓기!! 생명 불어넣기
+                
+            }
+
+            setInterval("auto()", 100);
+        });
+
+    
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

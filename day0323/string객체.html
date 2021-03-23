@@ -1,0 +1,32 @@
+<script>
+/*
+자바스크립트에서도 내장된 여러 객체를 지원하는데 , 이러한 객체들을 가리켜 
+자바스크립트 내장 객체라고한다. 이 예제에선 string객체 알아본다
+*/
+
+
+var str=new String("korea"); 
+var str2 = "korea"; //이게 효율성이 높음
+
+/* 가장 흔하면서도 일반적인 문자열 처리는 아래방법이 더 많이쓰임
+문자열은 인간이 가장 자주 사용하는 데이터형이다 따라서 일반 자로형처럼 선언할수있다
+하지만 그 본질은 객체다. 객체지만 new하지않고도 메모리에 올릴수있다
+*/
+var str3= str2.charAt();
+//charAt(index)  인덱스번째 문자 하나 반환
+// str2.charAt(2); => str3는 r
+
+for(var i=0; i<str2.length; i++){
+  //  console.log(str2.charAt(i));
+}
+
+
+//substring() 문자열 내에서 일부 문자열을 추출할수있는
+var fruit="pine apple";
+//fruit.substring(인덱스, 몇번쨰);
+console.log(fruit.substring(0,4)); //pine
+
+var sub=fruit.substring(5,fruit.length); //apple
+console.log(sub);
+
+</script>
