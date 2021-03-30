@@ -1,9 +1,9 @@
-class Ball{
+class Ballgame{
     //new 연산자에 의해 호출되는 메서드를 생성자 메서드라 하고,
     //생성자 메서드의 목적인 이 객체가 인스턴스화되ㅑㄹ때, 즉 사물이
     //탄생할 때 알맞는 개성을 부여하기 위함이다!!
     //공의 모습, 상태 등 형용사 적인것!! 사실은 변수값!!
-    constructor(container, src, width, height , velX, velY){
+    constructor(container, src, width, height , velX, velY,x,y){
         //객체와 함께 살아감.. 즉 객체가 죽을 때 같이 죽음
         //따라서 this로 명시된 객체가 
         this.container = container; //어디에 붙일지를 결정짓지 말고, 호출자가 결정하도록...
@@ -37,23 +37,85 @@ class Ball{
     move(){
         this.x = this.x + this.velX; //10씩 증가하는 등속도 운동
         this.y = this.y + this.velY;
+/*
 
-        //y축의 경계에 다다르면..부호변경
-        if(this.y >= this.limitY - this.height || this.y <=0){ //밑바닥에 도달하면!!
+        //  일반적인 벽돌깨기
+       if( this.y <=0){  //위에
             this.velY = -1*this.velY;
         }
 
-        //x축의 경계에 다다르면 부호변경 (0 or 너비까지)
         if(this.x <= 0|| this.x>=this.limitX-this.width){
             this.velX= -1*this.velX;
         }
+
+        if(this.y >= this.limitY - this.height ){ //밑바닥에 도달하면!!
+            var ans = confirm("게임 끝 다시?");
+            gameflag=false;
+            if(ans){
+                window.location.reload();
+            }
+        }
+*/
+
+// wrapper닿으면 끝나기 버전
+if(this.y >= this.limitY - this.height  ||  this.y <=0  ){ //밑바닥에 도달하면!!
+    var ans = confirm("게임 끝 다시?");
+    gameflag=false;
+    if(ans){
+        window.location.reload();
+    }
+}
+if(this.x <= 0|| this.x>=this.limitX-this.width){
+
+    var ans = confirm("게임 끝 다시?");
+    gameflag=false;
+    if(ans){
+        window.location.reload();
+    }
+}
+
+
 
         this.img.style.left = this.x + "px";
         this.img.style.top = this.y + "px";
         this.r += -2; 
         this.img.style.transform = "rotate("+this.r+"deg)"
 
+
+
+
+
+        if(hitTest(this.img ,bar)){    //이미지와 바 충돌테스트
+         
+            this.velY = -1*this.velY;
+            
+            
+        } 
       
+        
+          
+        for( var i =0 ; i<4 ; i++){
+            if(hitTest(this.img , block[i])){   //이미지와 블럭 충돌테스ㅡㅌ
+
+                this.velY = -1*this.velY;
+                block[i].style.opacity -= 0.5;
+                
+                if(block[i].style.opacity==0){
+                    this.container.removeChild(block[i]);
+                    block.splice(i,1);
+                    
+                }
+                if(block.length == 0){
+                    var ans = confirm("게임 성공 다시?");
+                    gameflag=false;
+                    if(ans){
+                        window.location.reload();
+                    }
+                }
+                
+            }
+        }
+       
           
     }
 }

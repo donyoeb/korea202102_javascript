@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>모자이크</title>
+<script src="../js/Rect.js"></script>
+<script>
+var cellSize=150; //셀 하나당 너비,높이가 같은 정사각형
+var cols=5; //호수 즉 column 의 갯수   x
+var rows=5;  //층수 즉 record 갯수  y
+var container;
+var rect=[];
+
+function init(){   
+    container=document.createElement("div");
+    container.style.width=cellSize*cols+"px";
+    container.style.height=cellSize*rows+"px";
+    container.style.margin="auto";
+    container.style.backgroundImage="url(../images/bg.jpg";
+    container.style.position="relative";
+    container.style.backgroundSize=(cellSize*cols) +"px" + (cellSize*rows)+"px";
+    container.style.backgroundSize="cover";
+
+    //화면에 부착!!
+    document.body.appendChild(container);
+
+    createRect();
+}  
+
+function createRect(){
+    for(var i =0 ; i<rows; i++){
+        for(var j=0; j<cols; j++){
+            
+            new Rect(container, cellSize, cellSize, cellSize*j , cellSize*i , "black");
+    
+        }
+    }
+}
+
+window.addEventListener("load", function(){
+    init();
+});
+</script>
+</head>
+<body>
+   
+</body>
+</html>
