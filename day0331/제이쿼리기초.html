@@ -1,0 +1,44 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+    /*
+        jQuery는 신기술이 아니라, 2006년대 미국의 한 개발자에 의해 소개된 자바스크립트 기분의 라이브러리
+
+        사용목적 : 자바스크립트 문법을 알아야 dom 등을 제어할수 있으므로 개발자가 아닌분야한텐 진입장벽이 높다 js는
+        따라서 js를 직접사용하지안혹 제이퀘리를 사용해 동일한 제어효과를 낼수있는 라이브러리
+
+        코드가 간략하다
+
+        누구를 . 어떻게() 형식을 사용
+
+        이때 누구 자리에 오는 문법구성요소를 선택자라한다
+        여기서 선택자란 css에서의 바로 그 선택자
+        
+    */
+
+/*
+    function init(){
+        document.querySelector("h1");
+   
+   }
+   window.addEventListener("load",function(){
+
+   });
+   */
+
+   //js load이벤트를 제이쿼리에선 다음과같이 표현
+   //변수명은 특수문자금지
+
+   $(document).ready(function(){
+
+       //document.querySelector("h1").innerText="애플";
+       $("h1").text("apple"); //innertext 
+       $("h1").html("orange");  //innerhtml
+
+       $("input[type='text']").val();
+
+
+   });
+
+
+</script>

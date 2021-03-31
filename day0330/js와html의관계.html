@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+
+<script>
+    /*
+        html은 프로그래밍 언어가 아니므로 자바스크립트와 연동될수없다.
+        즉 직접적으로 js가 hrml을 제어할수 없다
+        js는 지능적 프로그램이고, html은 그냥 문서일 뿐이라서
+        
+        js가 전자문서를 제어하려면? - > 직접적으로 제어하진 못하지만 html의 모든 태그마다 1:1대응하는
+        객체를 띄워놓고 객체를 제공하면 js가 이 객체를 이용하여 html을 간접적으로 제어할수있다.
+        하지만, 메모리(용량)의 소모가 많다. 따라서 스마트폰에서는 dom이 저해요인이다..
+
+        dom이란? document object model
+        문서내의 모든 태그들에 대해 객체화 시켜놓은 모델을 의미
+        따라서 심지어 br마저도 br bom이 제공됨
+
+        dom을 왜 알아야하나?
+        dom을 알면 api문서를 직접 찾을수있는 능력이 생긴다..
+
+        <select> --> select DOM
+    */
+//DOM도 객체이므로 결국 메서드(함수),. 속성(변수)를 가질수있다
+        
+    function init(){
+        //document.getElementById("sel").올수있는것?
+        //document의 여러가지메서드중  겟엘리먼트 메서드사용
+        
+    }
+</script>
+
+</head>
+<body onload="init()">
+    <select name="" id="sel"></select>
+</body>
+</html>

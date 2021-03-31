@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!--
+    위 <>는 반드시 써줘야함
+
+     xml은 html과 형제다!
+    단 차이점은 
+    html은 문서에 어떻게 표현될지가 주력(design) , w3에서 지정한 표준 태그만 사용가능하다. 이미 정해져있음
+
+    xml은 문서에 데이터를 어떻게 구성할지( consist data) , 사용자가 태그를 정의할수있다, 사용자정의 태그
+    푸드리스트는 새롭게 정의한 태그
+-->
+
+<foodList>
+    <food>
+        <name>돈까스</name>
+        <price>8000</price>
+    </food>
+
+    <food>
+        <name>냉면</name>
+        <price>5000</price>
+    </food>
+</foodList>
